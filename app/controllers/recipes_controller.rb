@@ -1,7 +1,11 @@
 class RecipesController < ApplicationController
 
   def index
-    @recipes = Recipe.all
+    if params[:query].present?
+      @recipes = Recipe.where("dishname ILIKE ?", "%#{params[:query]}%")
+    else
+      @recipes = Recipe.all
+    end
   end
 
   def show
@@ -14,6 +18,7 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
+    @recipe.user = current_user
     @recipe.save
     redirect_to recipe_path(@recipe)
   end

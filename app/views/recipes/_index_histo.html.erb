@@ -1,0 +1,37 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12">
+      <h1>All our recipes</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <% @recipes.each do |recipe| %>
+      <div class="col-md-4">
+        <div class="recipe-card">
+          <%= cl_image_tag recipe.photo.key, height: 300, width: 400, crop: :fill, class:"card-img-top" %>
+          <div class="recipe-card-content">
+            <div class="recipe-card-title">
+              <h4><%= recipe.dishname %></h4>
+            </div>
+            <p><%= recipe.description %></p>
+          </div>
+          <div class="recipe-card-actions">
+            <%= link_to "More info" , recipe_path(recipe), style:"text-decoration:none;color:black;text-align:center;" %>
+            <%= link_to "Remove", recipe_path(recipe), style:"text-decoration:none;color:black;text-align:center;",
+                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                class: "ms-3"
+            %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<%#  <div class="matchstar">
+  <% match.comments.average(:note).to_i.times do %>
+<%#   <i class="fa-solid fa-star fa-2xs"></i>
+  <% end %>
+<%# </div>%>

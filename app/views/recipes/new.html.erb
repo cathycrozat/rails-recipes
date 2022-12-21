@@ -1,0 +1,23 @@
+<div class="container-show d-flex justify-content-center align-items-center">
+  <div class="row">
+    <div class="col-lg-6 col-12">
+      <div class="card rounded-4 border-0 shadow mb-4 ml-4 p-4">
+        <h1 class="mb-4 text-center" >Ajouter une recette</h1>
+        <%= simple_form_for(@recipe) do |w| %>
+          <%#= f.input :nom, label: false, placeholder: "Nom" %>
+          <div class="field">
+            <%= w.text_field :dishname, :placeholder => "Nom du plat..."%>
+            <p></p>
+          </div>
+
+          <div class="field">
+            <%= w.text_field :description, :placeholder => "Description"%>
+            <p></p>
+          </div>
+          <%= w.input :photo, as: :file %>
+          <%= w.submit "Créer la recette", class: "btn btn-ghost" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

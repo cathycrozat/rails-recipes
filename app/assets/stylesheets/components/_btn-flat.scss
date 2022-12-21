@@ -14,3 +14,32 @@
 .slogan{
   text-align: center;
 }
+
+
+
+.btn-ghost {
+  color: black;
+  border: 2px solid black;
+  padding: 8px 24px;
+  border-radius: 5px;
+  font-weight: bold;
+
+  background-color: white;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  width: 95%;
+  display: block;
+  margin: auto;
+  margin-top: 18px;
+  margin-bottom: 15px;
+}
+
+.btn-ghost:hover {
+  opacity: 1;
+  background-color: black;
+  color: white;
+}
+
+.btn-no-design , .btn-no-design:active {
+  border: 0px solid transparent;
+}

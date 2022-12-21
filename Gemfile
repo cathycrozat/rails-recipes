@@ -7,6 +7,7 @@ ruby "3.1.2"
 #Added gems
 gem "simple_form", github: "heartcombo/simple_form"
 gem "cloudinary"
+gem "pg_search"
 
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"

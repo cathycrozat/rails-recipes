@@ -1,30 +1,51 @@
 <div class="container mt-3">
-  <div class="row">
-    <div class="col-12">
-      <h1>All our recipes</h1>
+
+  <div class="topnav">
+    <a class="active" href="/recipes">Recettes</a>
+    <a href="/recipes">Favoris</a>
+    <a href="/recipes">Découvertes</a>
+    <h1>All our recipes</h1>
+  </div>
+
+
+
+  <div class="container" style="margin-top:20px">
+    <div class=search_bar>
+      <%= form_with url: recipes_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a recipe"
+        %>
+        <%= submit_tag "Find", class: "btn btn-flat" %>
+      <% end %>
     </div>
   </div>
 
-  <div class="row">
+  <div class="cards-grid">
     <% @recipes.each do |recipe| %>
-      <div class="col-md-4">
-        <div class="recipe-card">
-          <%= cl_image_tag recipe.photo.key, height: 300, width: 400, crop: :fill, class:"card-img-top" %>
-          <div class="recipe-card-content">
-            <div class="recipe-card-title">
-              <h4><%= recipe.dishname %></h4>
+      <% if recipe.photo.attached? %>
+        <%= link_to  recipe_path(recipe), style:"text-decoration:none;color:white;" do %>
+        <div class="indexmatchcard card bg-dark"
+          style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.7)), url('<%= cl_image_path recipe.photo.key %>')">
+
+          <div class="card-img-overlay">
+            <%# <div class="topmatchcard">
+              <%#  <div class="matchstar">
+                <% match.comments.average(:note).to_i.times do %>
+                <%# <i class="fa-solid fa-star fa-2xs"></i>
+                <% end %>
+              <%# </div>
+            </div>%>
+            <div class="bottommatchcard text-white">
+              <h6><%= recipe.dishname %></h6>
+              <h6><i><small><%= recipe.description %></h6></i></small>
             </div>
-            <p><%= recipe.description %></p>
-          </div>
-          <div class="recipe-card-actions">
-            <%= link_to "More info" , recipe_path(recipe), style:"text-decoration:none;color:black;text-align:center;" %>
-            <%= link_to "Remove", recipe_path(recipe), style:"text-decoration:none;color:black;text-align:center;",
-                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-                class: "ms-3"
-            %>
           </div>
         </div>
-      </div>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
+
 </div>
