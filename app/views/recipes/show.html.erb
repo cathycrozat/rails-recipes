@@ -4,17 +4,15 @@
   <div class="card-match-show align-text-bottom"
         style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.9)), url('<%= cl_image_path @recipe.photo.key %>')">
     <div class="card-match-flex ">
-      <div class="card-match-text">
-        <div class="row ">
-          <h1><%= @recipe.dishname %></h1>
-          <h6> <%= @recipe.description %> </h6>
-        </div>
+      <div class="bottomrecipecard text-white">
+        <h1><%= @recipe.dishname %></h1>
+        <h6> <%= @recipe.description %> </h6>
+      </div>
         <%#  <div class="star">
           <% @match.comments.average(:note).to_i.times do %>
          <%#   <i class="fa-solid fa-star" style="color:white"></i>
           <% end %>
         <%#</div>%>
-      </div>
     </div>
   </div>
 
