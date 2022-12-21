@@ -1,2 +1,15 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://cdn.pixabay.com/photo/2015/03/10/13/15/spices-667115_960_720.jpg);">
+  <div class="container ">
+    <div class="slogan">
+      <p> <i class=" fa-solid fa-heart"> </i> Recipes </p>
+    </div>
+    <div class="d-flex justify-content-center">
+      <% if user_signed_in? %>
+        <%= link_to "Discover all our recipes", recipes_path, class:"btn btn-flat " %>
+        <% else %>
+        <%= link_to "Log in", new_user_session_path, class:"btn btn-flat" %>
+      <% end %>
+    </div>
+  </div>
+</div>
